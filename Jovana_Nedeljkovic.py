@@ -1103,19 +1103,6 @@ print(fin_conf_mat)
 print("Tacnost za svaku klasu:")
 print(fin_conf_mat.diagonal()/fin_conf_mat.sum(axis=1))
 
-# 17652 bezbednih predvidjenih kao bezbednih
-# 8868 nebezbednih predvidjenih kao nebezbednih
-# 587 opasnih predvidjenih kao opasnih
-
-# 80 bezbednih predvidjenih kao nebezbednih
-# 0 bezbednih predvidjenih kao opasnih
-
-# 279 nebezbednih predvidjenih kao bezbednih
-# 8 nebezbednih predvidjenih kao opasnih
-
-# 0 opasnih predvidjenih kao bezbednih
-# 25 opasnih predvidjenih kao nebezbednih
-
 # %%
 # 4. Klasifikator sa konačno odabranim parametrima obučiti na celokupnom trening skupu, pa testirati
 # na izdvojenom test skupu. Na osnovu dobijene matrice konfuzije izračunati mere uspešnosti
