@@ -74,30 +74,3 @@ def transform_categorical_feature(df, feature_name):
     df = pd.concat([df, df_dummy], axis=1)
     df.drop([feature_name], axis=1, inplace=True)
     return df
-
-def main():
-    file_path = 'GuangzhouPM20100101_20151231.csv'
-    df = load_data(file_path)
-    df = explore_data(df)
-    features_to_remove = ['No', 'PM_City Station', 'PM_5th Middle School']
-    df = remove_features(df, features_to_remove)
-    missing_data_columns = ['season', 'PM_US Post']
-    for column in missing_data_columns:
-        df = handle_missing_data(df, column)
-    features_with_outliers = ['HUMI', 'DEWP', 'PRES', 'Iws', 'precipitation', 'Iprec']
-    for feature_name in features_with_outliers:
-        outliers = identify_outliers_iqr(df[feature_name])
-        print(f"Outliers in {feature_name}:\n{outliers}")
-    analyze_feature(df, 'TEMP')
-    analyze_feature(df, 'DEWP')
-    analyze_feature(df, 'HUMI')
-    analyze_feature(df, 'PRES')
-    analyze_feature(df, 'Iws')
-    analyze_feature(df, 'precipitation')
-    analyze_feature(df, 'Iprec')
-    df = transform_categorical_feature(df, 'cbwd')
-    analyze_feature(df, 'PM_US Post')
-    analyze_feature_relationships(df, 'PM_US Post')
-
-if __name__ == "__main":
-    main()
